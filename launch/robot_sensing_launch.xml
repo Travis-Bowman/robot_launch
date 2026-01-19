@@ -1,0 +1,15 @@
+<launch>
+    <log message="Launching sensor stack..." />
+
+    <group>
+
+        <push-ros-namespace namespace="sensing"/>
+
+        <!-- camera launch -->
+        <include file="$(find-pkg-share camera_aravis2)/launch/camera_driver_gv_example.launch.py"/>
+        <!-- lidar launch -->
+
+        <!-- GPS launch -->
+    </group>
+   
+</launch>
