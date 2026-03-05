@@ -2,14 +2,22 @@
     <log message="Launching sensor stack..." />
 
     <group>
-
         <push-ros-namespace namespace="sensing"/>
 
         <!-- camera launch -->
-        <include file="$(find-pkg-share camera_aravis2)/launch/camera_driver_gv_example.launch.py"/>
-        <!-- lidar launch -->
+        <include file="$(find-pkg-share camera_aravis2)/launch/camera_driver_gv_example.launch.py"/> 
 
-        <!-- GPS launch -->
+        <!-- Start GPS stack (socat + nmea node) -->
+        <!-- socat is the bridge between the gps serial command ros to maintane a clearn serial port -->
+        <include file="$(find-pkg-share robot_launch)/launch/gps_stack.launch.py">
+            <arg name="baud" value="115200"/>
+            <arg name="pty" value="/tmp/gps_pty"/>
+            <arg name="frame_id" value="gps_link"/>
+        </include>
+
+        <!-- IMU (WitMotion/Yahboom) -->
+        <include file="$(find-pkg-share witmotion_ros)/launch/witmotion_launch.py"/>
+        
     </group>
    
 </launch>
