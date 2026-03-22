@@ -3,16 +3,16 @@
 
     <!-- launching rviz2 -->
     <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" />
-   
+    <!-- pi launch -->
+    <executable cmd="bash $(find-pkg-share robot_launch)/scripts/pi_launch.sh" output="screen"/> 
 
 
     <!-- subsystem launch-->
 
-    <!-- iBus launcher -->
-    <include file="$(find-pkg-share ibus_reader)/launch/ibus_reader.launch.xml"/>
 
     <!-- sensing launcher  -->
     <include file="$(find-pkg-share robot_launch)/launch/robot_sensing_launch.xml"/>
-    
+    <!-- controls launcher  -->
+    <include file="$(find-pkg-share robot_launch)/launch/robot_control_launch.xml" />
     
 </launch>

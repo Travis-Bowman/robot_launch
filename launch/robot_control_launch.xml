@@ -1,0 +1,10 @@
+<launch>
+    <log message="Launching control tower stack..." />
+
+    <group>
+        <push-ros-namespace namespace="control"/>
+
+        <node pkg="control_tower_ros2" exec="control_tower_node" name="control_tower_main" output="screen" />
+
+        </group>
+</launch>
